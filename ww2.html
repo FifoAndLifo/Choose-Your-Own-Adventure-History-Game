@@ -38,8 +38,8 @@
     <body>
         <p class='health'> <span id="hp">9</span>/9 Lives Left</p>
 
-        <div class='page' id="death" style="display:none; justify-content: center; align-items: center;">
-            <p>You are dead now. Tough luck do better L</p>
+        <div id="death" style="display:none; min-height: 100vh; justify-content:center; align-items:center; text-align:center">
+            <h1 style="color:#EEC170">You are dead now. Tough luck do better L</n1>
         </div>
 
         <!-- FIRST PAGE -->
@@ -116,8 +116,17 @@
             }
 
             function youDied(){
-                document.body.innerHTML = '';
-                showNext()
+                var allDivs = document.getElementsByClassName('page');
+                for (var i = 0; i < allDivs.length; i++){
+                    allDivs[i].style.display = 'none';
+                }
+                var t = document.getElementsByClassName("health");
+                for(var i = 0; i <t.length; i++){
+                    t[i].style.display = 'none';
+                }
+                var deathScreen = document.getElementById("death");
+                deathScreen.style.display = "flex";
+                
             }
 
             function showNext(nextPage){
