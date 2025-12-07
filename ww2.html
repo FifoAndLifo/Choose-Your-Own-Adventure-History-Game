@@ -38,6 +38,10 @@
     <body>
         <p class='health'> <span id="hp">9</span>/9 Lives Left</p>
 
+        <div class='page' id="death" style="display:none; justify-content: center; align-items: center;">
+            <p>You are dead now. Tough luck do better L</p>
+        </div>
+
         <!-- FIRST PAGE -->
 
         <div class='page' id='page1' style="display:block;">
@@ -59,6 +63,45 @@
         <div class="page" id='page2' style="display:none;">
             <h1>The End of the Great War</h1>
             <p>That’s right! Hitler blamed the Jews. He needed a scapegoat for the signing of the treaty, and despite German Jews having a fairly large contribution towards the Great War in Germany’s favor, they were quickly put to blame.</p>
+            <p>Anyways, now that you understand the basics of the start of World War II, let's pick your character!</p>
+            <div style="text-align: center;">
+                <p>Choose your character:</p>
+                <button onclick="setChar('soldier')">American Soldier</button>
+                <button onclick="setChar('general')"> American General</button>
+                <button onclick="setChar('jew')">Jewish German Civilian</button>
+            </div>
+        </div>
+
+        <!--                                 -->
+        <!------------------------------------->
+        <!-- IF THEY CHOOSE AMERICAN SOLDIER -->
+        <!------------------------------------->
+        <!--                                 -->
+
+        <div class="page" id="soldier1" style="display:none;">
+            <p>You are an american solder</p>
+        </div>
+
+
+
+        <!--                                 -->
+        <!------------------------------------->
+        <!-- IF THEY CHOOSE AMERICAN GENERAL -->
+        <!------------------------------------->
+        <!--                                 -->
+
+        <div class="page" id="general1" style="display:none;">
+            <p>you are a general</p>
+        </div>
+
+         <!--                                 -->
+        <!------------------------------------->
+        <!-- IF THEY CHOOSE Jew -->
+        <!------------------------------------->
+        <!--                                 -->
+
+        <div class="page" id="jew1" style="display:none;">
+            <p>you are jew :( good luck!</p>
         </div>
 
         <script>
@@ -67,16 +110,14 @@
             function loseLife(){
                 score--;
                 document.getElementById("hp").textContent = score;
-                var box = document.getElementByClass('health');
                 if(score == 0){
                     youDied();
-                }else if(score < 7){
-                    box.style.backgroundColor = '#f09b23';
                 }
             }
 
             function youDied(){
                 document.body.innerHTML = '';
+                showNext()
             }
 
             function showNext(nextPage){
@@ -93,6 +134,16 @@
                     allHints[i].style.display = 'none';
                 }
                 document.getElementById(q).style.display = 'block';
+            }
+
+            function setChar(char){
+                if(char === 'soldier'){
+                    showNext('soldier1');
+                }else if(char === 'general'){
+                    showNext('general1');
+                }else{
+                    showNext('jew1');
+                }
             }
         </script>
     </body>
