@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body{
+            font-family:Courier, monospace;
+            font-size:30px;
+            background-color:#585123;
+            color:#EEC170;
+        }
+        h1{
+            margin: 50px;
+            color:#F58549;
+        }
+        p{
+            margin: 50px;
+        }
+        button{
+            background-color:#772F1A;
+            color:#EEC170;
+            font-family:Courier, monospace;
+            font-size:30px;
+            padding:20px;
+            margin:20px;
+        }
+        .health{
+            position: fixed;
+            top:0px;
+            right:0px;
+            padding:10px;
+            background-color:#a4db4b;
+            color:black;
+        }
+    </style>
+    
+    <head>
+    <title>Education Thing</title>
+    </head>
+    <body>
+        <p class='health'> <span id="hp">9</span>/9 Lives Left</p>
+
+        <!-- FIRST PAGE -->
+
+        <div class='page' id='page1' style="display:block;">
+            <h1>The End of the Great War</h1>
+            <p>The Central Powers lost the Great War- however, the Allied Powers decided to place all the blame for the war on Germany with the Treaty of Versailles. Although Germany hadn’t been an instigator for the war, they had been very belligerent and therefore deserved to pay the damages.</p>
+            <p>In the Treaty of Versailles, Germany was forced to acccept full blame for the war, pay for all reparations, give up lots of territory and all their colonies, and disarm their military. The terms of the treaty were so severe and enraged Germany. Many grew convinced that the treaty itself was the reason Germany lost the war.</p>
+            <div class='page' id='page1' style="text-align: center; display: block;">
+                <p>WHO DID HITLER BLAME</p>
+                <button onclick="wrong('q1', '1a')">The Military</button>
+                <button onclick="wrong('q1', '1b')">The Allied Powers</button>
+                <button onclick="showNext('page2')">The Jews</button>
+                <p class='q1' id='1a' style="display:none;">Nope, not miolitary</p>
+                <p class='q1' id='1b' style="display:none;">Nope, not axis i mean alied i lied oo</p>
+            </div>
+        </div>
+
+        <!-- SECOND PAGE -->
+
+        <div class="page" id='page2' style="display:none;">
+            <h1>The End of the Great War</h1>
+            <p>That’s right! Hitler blamed the Jews. He needed a scapegoat for the signing of the treaty, and despite German Jews having a fairly large contribution towards the Great War in Germany’s favor, they were quickly put to blame.</p>
+        </div>
+
+        <script>
+            let score = 9;
+
+            function loseLife(){
+                score--;
+                document.getElementById("hp").textContent = score;
+                var box = document.getElementByClass('health');
+                if(score == 0){
+                    youDied();
+                }else if(score < 7){
+                    box.style.backgroundColor = '#f09b23';
+                }
+            }
+
+            function youDied(){
+                document.body.innerHTML = '';
+            }
+
+            function showNext(nextPage){
+                var allDivs = document.getElementsByClassName('page');
+                for (var i = 0; i < allDivs.length; i++){
+                    allDivs[i].style.display = 'none';
+                }
+                document.getElementById(nextPage).style.display = 'block';
+            }
+            function wrong(c, q){
+                loseLife();
+                var allHints = document.getElementsByClassName(c);
+                for(var i = 0; i < allHints.length; i++){
+                    allHints[i].style.display = 'none';
+                }
+                document.getElementById(q).style.display = 'block';
+            }
+        </script>
+    </body>
+</html>
