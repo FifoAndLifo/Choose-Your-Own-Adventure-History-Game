@@ -1,53 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Pacific Front</title>
-    <link rel="stylesheet" type="text/css" href="history_game.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sansita&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Civil War CYOA</title>
+<link rel="stylesheet" type="text/css" href="history_game.css">
+<link href="https://fonts.googleapis.com/css2?family=Sansita&display=swap" rel="stylesheet">
 </head>
 
-<body style="background-color: #a0a0c9;">
+<body style="background-color: #9090ac;">
 
 <div id="civ_main_style">
 
-<div id="dintro">
+    <div id="dintro">
+        <h1>The Story of the Civil War</h1>
+        <h1>By Vignesh Karumathil and George John</h1>
+        <div id="backstory">
+            <p>Welcome! Please choose your story!</p>
+        </div>
+    </div>
 
-<h1 style="font-size:125px;">The Story of the Civil War</h1>
-<h1 style="font-size:50px;">By Vignesh Karumathil and George John</h1>
-<div id="backstory">
-<p style="font-size:30px">Welcome to the story!</p>
-<p style="font-size:30px">Please choose your character!</p>
+    <div id="container">
+        <div id="middlebox">
+            <button onclick="showContent('slave_intro')">Spawn as a Slave</button>
+        </div>
+        <div id="middlebox">
+            <button onclick="showContent('confed_intro')">Spawn as a Confederate Soldier</button>
+        </div>
+    </div>
+
+    <!-- SLAVE PATH -->
+    <div id="slave_intro" class="story">
+        <p>You are an African Slave who lives in the South. Despite the North's propaganda of anti-slavery, the South has not given up human labor and continues.</p>
+        <p>Because of their refusal to quit slavery, the South has seceded from the United States to form their own country, and a war has started because of that.</p>
+        <p>This could be your chance to escape your master!</p>
+        <button onclick="showContent('escape_or_fight')">Next</button>
+        <button onclick="showSpawn()">Back</button>
+    </div>
+
+    <div id="escape_or_fight" class="story">
+        <p>Do you want to escape using the Underground Railroad or join the Union Army?</p>
+        <button onclick="showContent('underground_railroad')">Underground Railroad</button>
+        <button onclick="showContent('join_union')">Join Union Army</button>
+        <button onclick="showContent('slave_intro')">Back</button>
+    </div>
+
+    <div id="underground_railroad" class="story">
+        <p>You attempt to escape via the Underground Railroad. Which route do you take?</p>
+        <button onclick="showContent('canada')">Canada route</button>
+        <button onclick="showContent('pennsylvania')">Pennsylvania route</button>
+        <button onclick="showContent('escape_or_fight')">Back</button>
+    </div>
+
+    <div id="canada" class="story">
+        <p>You successfully reach Canada. You are free! Good ending!</p>
+        <p><em>A very popular destination for escaping slaves is Canada. They abolished slavery in 1834, 30 years before the U.S. did.</em></p>
+        <button onclick="showContent('underground_railroad')">Back</button>
+    </div>
+
+    <div id="pennsylvania" class="story">
+        <p>You took the Pennsylvania route and died. Bad ending!</p>
+        <p><em>The Pennsylvania route was very common in having bounty hunters and slave catchers, and slaves being caught were very common.</em></p>
+        <button onclick="showContent('underground_railroad')">Back</button>
+    </div>
+
+    <div id="join_union" class="story">
+        <p>You join the Union Army. Which battle do you fight?</p>
+        <button onclick="showContent('shiloh')">Shiloh</button>
+        <button onclick="showContent('gettysburg')">Gettysburg</button>
+        <button onclick="showContent('escape_or_fight')">Back</button>
+    </div>
+
+    <div id="shiloh" class="story">
+        <p>You survive the Battle of Shiloh and are honored.</p>
+        <p><em>The Battle of Shiloh was a very important but less lethal conflict, with a 76% rate of survival, higher than most battles.</em></p>
+        <p>You are now a free African American. Do you retire or continue in the military?</p>
+        <button onclick="showContent('retire')">Retire</button>
+        <button onclick="showContent('continue_military')">Continue in military</button>
+    </div>
+
+    <div id="gettysburg" class="story">
+        <p>You fought at Gettysburg and died. Bad ending!</p>
+        <p><em>The Battle of Gettysburg was the most brutal battle in the entirety of the American Civil War, with a death toll of 51 thousand soldiers combined!</em></p>
+        <button onclick="showContent('join_union')">Back</button>
+    </div>
+
+    <div id="retire" class="story">
+        <p>You retire and live a normal life. Good ending!</p>
+        <p><em>Soldiers could be released at the end of their 3 year service, or the end of the war.</em></p>
+        <button onclick="showContent('shiloh')">Back</button>
+    </div>
+
+    <div id="continue_military" class="story">
+        <p>Do you fight at the Overland Campaign or the Battle of the Crater?</p>
+        <button onclick="showContent('overland')">Battle of the Crater</button>
+        <button onclick="showContent('crater')">Overland Campaign</button>
+        <button onclick="showContent('shiloh')">Back</button>
+    </div>
+
+    <div id="overland" class="story">
+        <p>You didn't survive the Battle of the Crater. You were surrounded and died by the Confederates!</p> 
+        <p><em>In the Battle of the Crater, Confederate soldiers surrounded the Union and massacred them. More than 55% Union soldiers died, and you were one of them!</em></p>
+        <button onclick="showContent('continue_military')">Back</button>
+    </div>
+
+    <div id="crater" class="story">
+        <p>You fought in the Overland Campaign, and nearly died. However, you and your army survived and crippled the Confederacy!</p>
+        <p><em>The Overland Campaign was a very deadly campaign with 80-90 thousand deaths combined. On both sides, nearly 50% or more soldiers were killed during this campaign!</em></p>
+        <p>Do you fight at Bentonville or Appomattox?</p>
+        <button onclick="showContent('bentonville')">Bentonville</button>
+        <button onclick="showContent('appomattox')">Appomattox</button>
+        <button onclick="showContent('continue_military')">Back</button>
+    </div>
+
+    <div id="bentonville" class="story">
+        <p>You fought at Bentonville and died. Bad ending!</p>
+        <button onclick="showContent('crater')">Back</button>
+    </div>
+
+    <div id="appomattox" class="story">
+        <p>You fought at Appomattox, ending the war and receiving the best ending!</p>
+        <button onclick="showContent('crater')">Back</button>
+    </div>
+
+    <!-- CONFEDERATE PATH -->
+    <div id="confed_intro" class="story">
+        <p>You are a Confederate soldier, fighting to defend your state. You must choose whether to desert or join campaigns.</p>
+        <button onclick="showContent('desert')">Desert the army</button>
+        <button onclick="showContent('join_campaigns')">Join the campaigns</button>
+        <button onclick="showSpawn()">Back</button>
+    </div>
+
+    <div id="desert" class="story">
+        <p>You tried to desert the army. You are executed. Bad ending!</p>
+        <button onclick="showContent('confed_intro')">Back</button>
+    </div>
+
+    <div id="join_campaigns" class="story">
+        <p>You join the campaigns. Which battle do you fight first?</p>
+        <button onclick="showContent('confed_shiloh')">Shiloh</button>
+        <button onclick="showContent('confed_gettysburg')">Gettysburg</button>
+        <button onclick="showContent('confed_intro')">Back</button>
+    </div>
+
+    <div id="confed_shiloh" class="story">
+        <p>You survive the Battle of Shiloh. Do you retire or fight again?</p>
+        <button onclick="showContent('confed_retire')">Retire</button>
+        <button onclick="showContent('confed_next_battle')">Fight another battle</button>
+    </div>
+
+    <div id="confed_gettysburg" class="story">
+        <p>You fought at Gettysburg and died. Bad ending!</p>
+        <button onclick="showContent('join_campaigns')">Back</button>
+    </div>
+
+    <div id="confed_retire" class="story">
+        <p>You retire from military service. This is your good ending!</p>
+        <button onclick="showContent('confed_shiloh')">Back</button>
+    </div>
+
+    <div id="confed_next_battle" class="story">
+        <p>Which battle will you fight now? Choose carefully.</p>
+        <button onclick="showContent('confed_battle1')">Deadly battle (e.g., Overland Campaign)</button>
+        <button onclick="showContent('confed_battle2')">Less deadly battle</button>
+        <button onclick="showContent('confed_shiloh')">Back</button>
+    </div>
+
+    <div id="confed_battle1" class="story">
+        <p>You fought a deadly battle and died. Bad ending!</p>
+        <button onclick="showContent('confed_next_battle')">Back</button>
+    </div>
+
+    <div id="confed_battle2" class="story">
+        <p>You fought a less deadly battle. Later, you are captured by the Union army and become a prisoner. This is the only good ending for the Confederate path.</p>
+        <button onclick="showContent('confed_next_battle')">Back</button>
+    </div>
+
 </div>
-</div> <!--dintro-->
 
-<div id="container">
+<script>
+window.onload = function() {
+    const stories = document.querySelectorAll('.story');
+    stories.forEach(div => div.style.display = 'none');
+    document.getElementById('container').style.display = 'flex';
+};
 
-<div id="leftbox">
-<button style="text-align:left" onclick="document.getElementById('slave_content').style.display='block'">
-Spawn as a Slave
-</button>
-</div>
+function showContent(id) {
+    const stories = document.querySelectorAll('.story');
+    stories.forEach(div => div.style.display = 'none');
+    document.getElementById('container').style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+}
 
-<div id="middlebox">
-<button style="text-align:center" onclick="document.getElementById('northern_content').style.display='block'">
-Spawn as a Northern Soldier
-</button>
-</div>
-
-<div id="rightbox">
-<button style="text-align:right" onclick="document.getElementById('southern_content').style.display='block'">
-Spawn as a Souther Soldier
-</button>
-</div>
-
-</div> <!--container-->
-
-<div id="slave_content">
-<p>You are an African Slave who</p>
-</div>
-
-</div> <!--civ_main_style-->
+function showSpawn() {
+    const stories = document.querySelectorAll('.story');
+    stories.forEach(div => div.style.display = 'none');
+    document.getElementById('container').style.display = 'flex';
+}
+</script>
 
 </body>
+</html>
