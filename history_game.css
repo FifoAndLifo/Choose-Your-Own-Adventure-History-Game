@@ -1,0 +1,54 @@
+/* MAIN PAGE */
+
+#dintro {
+    text-align:center;
+}
+#container {
+    display:flex
+}
+
+#leftbox, #middlebox, #rightbox {
+    padding: .5rem;
+}
+#leftbox, #rightbox {
+    width:25%;
+}
+#middlebox {
+    width:50%;
+    text-align:center;
+}
+#rightbox {
+    text-align:right;
+}
+
+#dcivil {
+    text-align:left;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#dpac_front {
+    text-align:center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#deur_front {
+    text-align:right;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Plot Points */
+
+#backstory {
+  font-family: 'Sansita', sans-serif;
+  text-align:center;
+}
+
+/* Pacific Front */
+
+#pac_main_style {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Civil War */
+
+#civ_main_style {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
